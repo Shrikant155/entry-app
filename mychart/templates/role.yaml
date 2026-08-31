@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+ name: {{ include "mychart.fullname" . }}-role
+ namespace:  {{ .Values.roles.namespace }}
+
+rules:
+ - apiGroups: {{ .Values.roles.apigroups | toYaml | nindent 6 }}
+   resources: {{ .Values.roles.resources | toYaml | nindent 6 }}
+   verbs: {{ .Values.roles.verbs | toYaml | nindent 6 }}
