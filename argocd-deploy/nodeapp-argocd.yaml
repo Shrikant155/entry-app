@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+ name:  shrikant-argo-app
+ namespace: argocd
+spec:
+ project: default
+ source:
+  repoURL: https://github.com/Shrikant155/entry-app.git
+  targetRevision: main
+  path: mychart
+
+ destination:
+  server: https://kubernetes.default.svc
+  namespace: default
+  
+ syncPolicy:
+   automated:
+     prune: true
+     selfHeal: true
