@@ -1,11 +1,4 @@
 node_modules
 package.json
 package-lock.json 
-configmap.yaml
-service.yaml
-secret.yaml
-daemonset.yaml
-statfulset.yaml
-deployment.yaml
-statefulset.yaml
-
+localyaml
