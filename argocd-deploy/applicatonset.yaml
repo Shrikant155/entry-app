@@ -1,0 +1,38 @@
+apiVersion:  argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata: 
+ name: node-applicationset
+ namespace: argocd
+
+spec:
+ generators:
+  - list:
+      elements:
+         - namespace: dev
+         - namespace: prod
+         - namespace: qa
+         - namespace: staging
+
+ template:
+  metadata:
+    name:  "nodeapp-{{namespace}}"
+
+  spec:
+   project: default
+   source:
+     repoURL: https://github.com/Shrikant155/entry-app.git
+     targetRevision: main
+     path: mychart
+     helm:
+      valueFiles:
+       - values.yaml
+       - "values-{{namespace}}.yaml"
+   destination:
+      server: https://kubernetes.default.svc
+      namespace: "{{namespace}}"
+
+   syncPolicy:
+     automated:
+       prune: true
+       selfHeal: true
+
