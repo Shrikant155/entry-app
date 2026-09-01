@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
  name: node-cron-job
- namespace: default
+ namespace: {{ .Values.cron.namespcae }}
 
 spec:
  schedule: "*/5 * * * *"
