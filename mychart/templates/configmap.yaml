@@ -2,7 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata: 
  name:  {{ include "mychart.fullname" . }}-config
+ annotations:
+  argocd.argoproj.io/sync-wave: {{ .Values.order.config | quote }}
 data:
  DB_HOST: {{ .Values.externalDatabase.dbhost | quote }}
  DB_NAME:  {{ .Values.externalDatabase.dbname | quote }}
  DB_PORT:  {{ .Values.externalDatabase.dbport | quote }}
+
