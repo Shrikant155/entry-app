@@ -191,3 +191,9 @@ roles:
   apigroups: [""]
   resources: ["pods"]
   verbs: ["create","delete","get","list","update"]
+#for apply yaml in this order 
+order:
+ deploy: 2
+ config: 0
+ secret: 1
+ 
