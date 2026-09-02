@@ -25,8 +25,7 @@ spec:
      path: mychart
      helm:
       valueFiles:
-       - values.yaml
-       - "values-{{namespace}}.yaml"
+        - "values-{{namespace}}.yaml"
    destination:
       server: https://kubernetes.default.svc
       namespace: "{{namespace}}"
