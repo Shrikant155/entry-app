@@ -173,7 +173,7 @@ tolerations: []
    #operator: "Equal"
 affinity: {}
 externalDatabase:
-  dbhost: "host.minikube.internal"
+  dbhost: "192.168.49.1"
   dbuser:  "Ajit"
   dbpass: "Ajit@9674"
   dbname: "db_app"
