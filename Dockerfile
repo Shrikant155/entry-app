@@ -4,4 +4,4 @@ COPY package*.json ./
 RUN npm install --production
 COPY . .
 ENTRYPOINT ["node"]
-CMD ["server.js"]
+CMD ["-r","./tracing.js","server.js"]
