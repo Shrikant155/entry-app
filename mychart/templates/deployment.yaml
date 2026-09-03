@@ -86,6 +86,11 @@ spec:
                configMapKeyRef:
                   name: {{ include "mychart.fullname" . }}-config
                   key: DB_PORT
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://jaeger.observability.svc.cluster.local:4317"
+            
+            - name: OTEL_SERVICE_NAME
+              value: "entry-app"
 
       {{- with .Values.volumes }}
       volumes:
