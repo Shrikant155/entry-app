@@ -13,7 +13,11 @@ const sdk = new NodeSDK({
     [SemanticResourceAttributes.SERVICE_NAME]: process.env.OTEL_SERVICE_NAME || 'entry-app',
   }),
   traceExporter,
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+getNodeAutoInstrumentations(),
+ new MySQL2Instrumentation(),
+
+],
 });
 
 sdk.start();
